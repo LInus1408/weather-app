@@ -1,6 +1,8 @@
+@import "./base/reset.scss";
 @import "./base/typography.scss";
+@import "./themes/theme.scss";
+@import "./abstracts/functions.scss";
+@import "./abstracts/mixins.scss";
+@import "./layout/header.scss";
+@import "./components/buttons.scss";
 
-
-body {
-  font-family: 'Lato', sans-serif;
-}

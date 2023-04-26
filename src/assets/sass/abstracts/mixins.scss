@@ -1,0 +1,22 @@
+@mixin fonts($color, $font, $font-weight, $font-size, $font-style) {
+  color: $color;
+  font-family: $font, 'Times New Roman', sans-serif;
+  font-weight: $font-weight;
+  font-size: $font-size;
+  font-style: $font-style;
+}
+@mixin flexbox1($flex-flow, $align-items, $justify-content) {
+  display: flex;
+  flex-flow:  $flex-flow;
+  align-items: $align-items;
+  justify-content: $justify-content;
+}
+
+@mixin image($background-image, $background-position, $width, $height) {
+  background-image: url($background-image);
+  background-repeat: no-repeat;
+  background-position: $background-position;
+  width: $width;
+  height: $height;
+
+}

@@ -1,0 +1,36 @@
+.header {
+  background-color: #0039a6;
+}
+.header-wrapper {
+  @include flexbox1(row wrap, center, space-between);
+  padding: 25px 0;
+  cursor: pointer;
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 6px;
+    }
+}
+.header-container {
+  @include flexbox1(row nowrap, center, center);
+  width: 200px;
+}
+.header-container:hover .header-container__tittle  {
+  text-shadow: 0px 0px 1px yellow;
+}
+.header-container:hover .header-container__logo {
+  transform: rotate(360deg);
+}
+.header-container__tittle {
+  @include fonts(yellow, 'Lato', 900, 21px, normal);
+  vertical-align: middle;
+  padding-right: 8px;
+}
+.header-time {
+  width: 200px;
+  text-align: center;
+  @include fonts(yellow, 'Lato', 900, 21px, normal);
+    @media (max-width: 768px) {
+      order: -1;
+    }
+}
+
