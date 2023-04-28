@@ -50,6 +50,10 @@ module.exports = {
           from: 'src/assets/images',
           to: 'assets/images',
         },
+        {
+          from: 'src/assets/favicon',
+          to: 'assets/favicon',
+        },
       ],
       options: {
         concurrency: 100,
