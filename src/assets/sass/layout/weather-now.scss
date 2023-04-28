@@ -1,0 +1,4 @@
+.section-currentWeather {
+  @include flexbox1(row wrap, center, center);
+  margin-top: 50px;
+}

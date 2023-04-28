@@ -1,0 +1,47 @@
+.card-Current-Weather {
+  width: 500px;
+  background-color: red;
+}
+.current-city-name {
+  padding-top: 13px;
+  text-align: center;
+  @include fonts(white, 'Lato',700, 19px, normal);
+}
+.current-time {
+  padding-top: 9px;
+  text-align: center;
+  @include fonts(white, 'Lato',400, 16px, normal);
+}
+.current-temp {
+  padding-top: 60px;
+  text-align: center;
+  @include fonts(white, 'Lato',900, 75px, normal);
+}
+.current-FeelsTemp {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  text-align: center;
+  width: 40%;
+  margin: auto;
+  background-color: rgba(128, 128, 128, 0.2);
+
+  @include fonts(white, 'Lato',400, 16px, normal);
+}
+.current-DescriptionWeather {
+  padding-top: 10px;
+  padding-bottom: 20px;
+  text-align: center;
+  @include fonts(white, 'Lato',400, 19px, normal);
+}
+.current-WeatherInfo {
+  @include flexbox1(row wrap, center, space-between);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: rgba(0, 0, 0, 0.2);
+  gap: 10px;
+}
+.current-WeatherWind, .current-WeatherPleasure, .current-WeatherHumidity{
+  flex-grow: 1;
+  text-align: center;
+  @include fonts(white, 'Lato',400, 16px, normal);
+}

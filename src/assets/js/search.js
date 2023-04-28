@@ -52,4 +52,10 @@ export default function search() {
     searchInput.blur();
     clearSearch(event);
   });
+  // if (document.querySelector('.result-Search')) {
+  //   const resultSearch = document.querySelector('.result-Search');
+  //   resultSearch.addEventListener('click', (event) => {
+  //     console.log('f')
+  //   });
+  // }
 }
