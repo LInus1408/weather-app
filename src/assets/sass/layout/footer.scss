@@ -1,0 +1,65 @@
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #0039a6;
+}
+.footer-wrapper {
+  @include flexbox1(row wrap, center, space-evenly);
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+.footer-link__mod {
+  @include fonts(white, 'Lato', 700, 23px, normal);
+  text-decoration: none;
+  &:hover {
+    color: yellow;
+  }
+}
+.weather-sun  {
+  width: 100px;
+  height: 80px;
+  display: inline-block;
+  position: relative;
+}
+
+.sun{
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(45deg,#F3A966,yellow);
+  border-radius: 100%;
+  transform: rotate(0deg);
+  animation: xuanzhuang 6s infinite linear;
+  position: absolute;
+  left: 50%;
+  top: 20%;
+}
+
+.rays{
+  width: 4px;
+  height: 7.5px;
+  background: yellow;
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  top: -12.5px;
+  box-shadow: 0 67.5px yellow;
+  border-radius: 2px;
+  transform-origin: 0px 37.5px;
+}
+
+.rays:nth-child(2){
+  transform: rotate(45deg);
+}
+
+.rays:nth-child(3){
+  transform: rotate(90deg);
+}
+
+.rays:nth-child(4){
+  transform: rotate(135deg);
+}
+
+@keyframes xuanzhuang {
+  100% { transform: rotate(360deg); }
+}
