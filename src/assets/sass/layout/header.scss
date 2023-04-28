@@ -25,12 +25,19 @@
   vertical-align: middle;
   padding-right: 8px;
 }
-.header-time {
+.incorrect-value {
+  @include fonts(yellow, 'Lato', 400, 17px, normal);
+  position: absolute;
+  margin-top: 5px;
+}
+.lang {
   width: 200px;
   text-align: center;
-  @include fonts(yellow, 'Lato', 900, 21px, normal);
+  @include fonts(white, 'Lato', 900, 21px, normal);
     @media (max-width: 768px) {
       order: -1;
     }
 }
-
+.chosen-Lang {
+  color: yellow;
+}

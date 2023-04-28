@@ -2,7 +2,6 @@
   @include image('../images/search-32.png', 0% 0%, 32px, 32px); 
   display: block;
   position: absolute;
-  cursor: pointer;
   top: 30px;
   margin-left: 5px;
     @media (max-width: 768px) {
@@ -22,23 +21,4 @@
       border: none;
       outline: 2px solid black;
     }
-}
-.search-list {
-  background-color: #f0f0f0;
-  position: absolute;
-  margin-top: 15px;
-  width: 280px;
-  border-radius: 4px;
-  max-height: 600px; 
-  overflow-y: scroll; 
-}
-.search-item {
-  width: 100%;
-  border-bottom: 1px solid silver;
-  padding: 13px 0 2px 10px;
-  @include fonts(black, 'Lato', 400, 14px, normal);
-  &:hover {
-    font-weight: 700;
-    background-color: rgb(169,169,169);
-  }
 }

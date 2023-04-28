@@ -1,0 +1,14 @@
+.result-Search {
+  margin-top: 10px;
+  position: absolute;
+}
+.result-Search_item {
+  @include fonts(white, 'Lato', 300, 20px, normal);
+  cursor: pointer;
+  padding-top: 20px;
+  &:hover {
+    color: yellow;
+    text-decoration:  underline;
+    text-underline-offset: 4px;
+  }
+}

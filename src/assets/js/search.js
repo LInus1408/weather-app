@@ -1,35 +1,55 @@
-import searchQueries from './searchQueries';
 import HtmlBuilder from './dom';
+import weatherAPI from './api';
+import savesValues from './saves_values';
 
-export default async function search() {
+export default function search() {
   const searchInput = document.querySelector('.search');
   const searchInputPic = document.querySelector('.search-pic');
-  async function clearSearch(event) { // очистка инпута
-    event.preventDefault();
-    searchInput.value = '';
-    const ul = document.querySelector('.search-list');
-    const listBuilder = new HtmlBuilder();
-    listBuilder.deleteNode(ul);
+  function checkLang() { // проверка текущего языка
+    return document.querySelector('.chosen-Lang').textContent;
   }
-  searchInput.addEventListener('focus', () => { // при фокусе на input
-    const listBuilder = new HtmlBuilder(searchInput);
-    listBuilder.searchBuilder(searchQueries.queries);
-  });
-  searchInput.addEventListener('blur', (event) => { // потеря фокуса с инпута
-    const searchList = document.querySelector('.search-list');
-    if (searchList) {
-      clearSearch(event);
+  function clearSearch() { // очистка инпута
+    searchInput.value = '';
+  }
+  async function getGeoWeather(value) { // проверка геолокации
+    if (value.trim().length === 0) {
+      const htmlBuilder = new HtmlBuilder(checkLang());
+      htmlBuilder.incorrectValue();
+      return false;
+    }
+    const urlGeo = `http://api.openweathermap.org/geo/1.0/direct?q=${value}&limit=5&appid=0f0f05a27772edf9aeced21a5cb64568`;
+    savesValues.urlGeo = urlGeo;
+    const dataGeo = await weatherAPI.getGeo(urlGeo);
+    if (dataGeo.length === 0) {
+      const htmlBuilder = new HtmlBuilder(checkLang());
+      htmlBuilder.incorrectValue();
+      return false;
+    }
+    const htmlBuilder = new HtmlBuilder(checkLang(), dataGeo);
+    htmlBuilder.builderSearch();
+    return dataGeo;
+  }
+  document.addEventListener('click', (event) => { // нажатие не на инпут
+    if (event.target.className) {
+      if ((event.target.className !== 'search') && (event.target.className !== 'search-pic')) {
+        clearSearch();
+      }
+    } else {
+      clearSearch();
     }
   });
   searchInput.addEventListener('keydown', (event) => { // при нажатие enter на инпуте
     if (event.keyCode === 13) {
-      searchQueries.addQuery(searchInput.value);
+      getGeoWeather(searchInput.value);
+      event.preventDefault();
       searchInput.blur();
+      clearSearch(event);
     }
   });
-
-  searchInputPic.addEventListener('click', () => { // при нажатие на картинку поиска
-    searchQueries.addQuery(searchInput.value);
+  searchInputPic.addEventListener('click', (event) => { // при нажатие на лупу
+    getGeoWeather(searchInput.value);
+    event.preventDefault();
     searchInput.blur();
+    clearSearch(event);
   });
 }
