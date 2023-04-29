@@ -12,7 +12,7 @@
   }
 }
 .future-time {
-  @include fonts(black, 'Lato',400, 16px, normal);
+  @include fonts(red, 'Lato',400, 16px, normal);
   text-align: center;
 }
 .future-temp {

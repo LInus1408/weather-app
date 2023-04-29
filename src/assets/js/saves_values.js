@@ -6,6 +6,7 @@ const savesValues = {
   nameCountry: '',
   nameRu: '',
   nameEng: '',
+  currentLang: '',
 };
 
 export default savesValues;

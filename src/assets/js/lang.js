@@ -1,7 +1,6 @@
 import HtmlBuilder from './dom';
 import savesValues from './saves_values';
 import weatherAPI from './api';
-import cleanHTML from './clean';
 
 export default function chooseLang() {
   const langEng = document.querySelectorAll('.lang span');
@@ -10,6 +9,7 @@ export default function chooseLang() {
     if (!event.target.classList.contains('chosen-Lang')) {
       event.target.classList.add('chosen-Lang');
       langEng[1].classList.remove('chosen-Lang');
+      savesValues.currentLang = 'Eng';
       if (document.querySelector('.result-Search')) { // если есть результат поиска
         const dataGeo = await weatherAPI.getGeo(savesValues.urlGeo);
         const htmlBuilder = new HtmlBuilder('Eng', dataGeo);
@@ -29,6 +29,7 @@ export default function chooseLang() {
     if (!event.target.classList.contains('chosen-Lang')) {
       event.target.classList.add('chosen-Lang');
       langEng[0].classList.remove('chosen-Lang');
+      savesValues.currentLang = 'Ru';
       if (document.querySelector('.result-Search')) { // если есть результат поиска
         const dataGeo = await weatherAPI.getGeo(savesValues.urlGeo);
         const htmlBuilder = new HtmlBuilder('Ru', dataGeo);

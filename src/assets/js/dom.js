@@ -21,6 +21,7 @@ class HtmlBuilder {
     cardsFutureWeather.className = 'cards-Future-Weather';
     section.prepend(cardsFutureWeather);
 
+    console.log(url)
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < 40; i++) {
       const cardFutureWeather = document.createElement('div');
@@ -74,7 +75,7 @@ class HtmlBuilder {
     const cardCurrentWeather = document.createElement('div');
     cardCurrentWeather.className = 'card-Current-Weather';
     section.prepend(cardCurrentWeather);
-
+    console.log(this.value);
     if (this.lang === 'Ru') {
       const nameCity = document.createElement('h2');
       nameCity.className = 'current-city-name';
@@ -85,6 +86,56 @@ class HtmlBuilder {
       currentTime.className = 'current-time';
       currentTime.textContent = `${time()}`;
       cardCurrentWeather.append(currentTime);
+
+      const wetherIcon = document.createElement('div');
+      wetherIcon.className = 'wetherIcon';
+
+      if (this.value.weather[0].icon === '01d' || this.value.weather[0].icon === '02d') {
+        wetherIcon.innerHTML = `<div icon="sunny" data-label="Sunny">
+        <span class="sun"></span>
+      </div>`;
+      } else if (this.value.weather[0].icon === '01n' || this.value.weather[0].icon === '02n' || this.value.weather[0].icon === '03n' || this.value.weather[0].icon === '04n') {
+        wetherIcon.innerHTM = `<div icon="supermoon" data-label="Cool!">
+        <span class="moon"></span>
+        <span class="meteor"></span>
+      </div>`;
+      } else if (this.value.weather[0].icon === '03d' || this.value.weather[0].icon === '04d') {
+        wetherIcon.innerHTML = `<div icon="cloudy" data-label="Perfect">
+        <span class="cloud"></span>
+        <span class="cloud"></span>
+      </div>`;
+      } else if (this.value.weather[0].icon === '09d' || this.value.weather[0].icon === '09n' || this.value.weather[0].icon === '10d' || this.value.weather[0].icon === '10n' || this.value.weather[0].icon === '11d' || this.value.weather[0].icon === '11n') {
+        wetherIcon.innerHTML = `<div icon="stormy" data-label="Soggy">
+        <span class="cloud"></span>
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>`;
+      } else {
+        wetherIcon.innerHTML = `<div icon="snowy" data-label="Chilly">
+        <span class="snowman"></span>
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>`;
+      }
+      cardCurrentWeather.append(wetherIcon);
 
       const currentTemp = document.createElement('p');
       currentTemp.className = 'current-temp';
@@ -129,6 +180,56 @@ class HtmlBuilder {
       currentTime.className = 'current-time';
       currentTime.textContent = `${time()}`;
       cardCurrentWeather.append(currentTime);
+
+      const wetherIcon = document.createElement('div');
+      wetherIcon.className = 'wetherIcon';
+
+      if (this.value.weather[0].icon === '01d' || this.value.weather[0].icon === '02d') {
+        wetherIcon.innerHTML = `<div icon="sunny" data-label="Sunny">
+        <span class="sun"></span>
+      </div>`;
+      } else if (this.value.weather[0].icon === '01n' || this.value.weather[0].icon === '02n' || this.value.weather[0].icon === '03n' || this.value.weather[0].icon === '04n') {
+        wetherIcon.innerHTM = `<div icon="supermoon" data-label="Cool!">
+        <span class="moon"></span>
+        <span class="meteor"></span>
+      </div>`;
+      } else if (this.value.weather[0].icon === '03d' || this.value.weather[0].icon === '04d') {
+        wetherIcon.innerHTML = `<div icon="cloudy" data-label="Perfect">
+        <span class="cloud"></span>
+        <span class="cloud"></span>
+      </div>`;
+      } else if (this.value.weather[0].icon === '09d' || this.value.weather[0].icon === '09n' || this.value.weather[0].icon === '10d' || this.value.weather[0].icon === '10n' || this.value.weather[0].icon === '11d' || this.value.weather[0].icon === '11n') {
+        wetherIcon.innerHTML = `<div icon="stormy" data-label="Soggy">
+        <span class="cloud"></span>
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>`;
+      } else {
+        wetherIcon.innerHTML = `<div icon="snowy" data-label="Chilly">
+        <span class="snowman"></span>
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>`;
+      }
+      cardCurrentWeather.append(wetherIcon);
 
       const currentTemp = document.createElement('p');
       currentTemp.className = 'current-temp';
