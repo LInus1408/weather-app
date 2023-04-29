@@ -882,6 +882,7 @@ function _getLocalStorage() {
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
+          _context.prev = 0;
           savedValues = JSON.parse(localStorage.getItem('myValues'));
           savedLang = JSON.parse(localStorage.getItem('lang'));
           langEng = document.querySelectorAll('.lang span');
@@ -891,17 +892,17 @@ function _getLocalStorage() {
             _saves_values__WEBPACK_IMPORTED_MODULE_2__["default"].currentLang = 'Eng';
           }
           if (!savedValues.urlWeatherFuture) {
-            _context.next = 36;
+            _context.next = 37;
             break;
           }
           if (!savedValues.urlCurrentWeather) {
-            _context.next = 22;
+            _context.next = 23;
             break;
           }
           urlCurrentWeather = "".concat(savedValues.urlCurrentWeather).concat(document.querySelector('.chosen-Lang').textContent);
-          _context.next = 9;
+          _context.next = 10;
           return _api__WEBPACK_IMPORTED_MODULE_3__["default"].getGeo(urlCurrentWeather);
-        case 9:
+        case 10:
           dataGeo = _context.sent;
           _saves_values__WEBPACK_IMPORTED_MODULE_2__["default"].urlWeatherCurrent = savedValues.urlCurrentWeather;
           htmlBuilder = new _dom__WEBPACK_IMPORTED_MODULE_4__["default"](document.querySelector('.chosen-Lang').textContent, dataGeo);
@@ -913,13 +914,13 @@ function _getLocalStorage() {
           htmlBuilder.builderCurrentWeather();
           htmlBuilder.builderFutureWeather(savedValues.urlWeatherFuture);
           _saves_values__WEBPACK_IMPORTED_MODULE_2__["default"].currentLang = document.querySelector('.chosen-Lang').textContent;
-          _context.next = 36;
+          _context.next = 37;
           break;
-        case 22:
+        case 23:
           _urlCurrentWeather = "".concat(savedValues.urlWeatherCurrent).concat(document.querySelector('.chosen-Lang').textContent);
-          _context.next = 25;
+          _context.next = 26;
           return _api__WEBPACK_IMPORTED_MODULE_3__["default"].getGeo(_urlCurrentWeather);
-        case 25:
+        case 26:
           _dataGeo = _context.sent;
           _saves_values__WEBPACK_IMPORTED_MODULE_2__["default"].urlWeatherCurrent = savedValues.urlWeatherCurrent;
           _htmlBuilder = new _dom__WEBPACK_IMPORTED_MODULE_4__["default"](document.querySelector('.chosen-Lang').textContent, _dataGeo);
@@ -931,11 +932,18 @@ function _getLocalStorage() {
           _htmlBuilder.builderCurrentWeather();
           _htmlBuilder.builderFutureWeather(savedValues.urlWeatherFuture);
           _saves_values__WEBPACK_IMPORTED_MODULE_2__["default"].currentLang = document.querySelector('.chosen-Lang').textContent;
-        case 36:
+        case 37:
+          _context.next = 42;
+          break;
+        case 39:
+          _context.prev = 39;
+          _context.t0 = _context["catch"](0);
+          console.log('');
+        case 42:
         case "end":
           return _context.stop();
       }
-    }, _callee);
+    }, _callee, null, [[0, 39]]);
   }));
   return _getLocalStorage.apply(this, arguments);
 }
