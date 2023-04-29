@@ -1,13 +1,11 @@
 .footer {
-  position: absolute;
+  position: fixed !important;
   bottom: 0;
   width: 100%;
   background-color: #0039a6;
 }
 .footer-wrapper {
   @include flexbox1(row wrap, center, space-evenly);
-  margin-bottom: 15px;
-  margin-top: 15px;
 }
 .footer-link__mod {
   @include fonts(white, 'Lato', 700, 23px, normal);

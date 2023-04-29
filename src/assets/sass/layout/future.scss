@@ -1,0 +1,26 @@
+.cards-Future-Weather {
+  margin-top: 50px;
+  @include flexbox1(row nowrap, center, flex-start);
+  height: 200px; 
+  overflow-y: scroll; 
+  background-color: #C0C0C0;
+}
+.card-Future-Weather {
+  border-right: 1px solid black;
+  &:last-child {
+    border-right: none;
+  }
+}
+.future-time {
+  @include fonts(black, 'Lato',400, 16px, normal);
+  text-align: center;
+}
+.future-temp {
+  @include fonts(black, 'Lato',900, 18px, normal);
+  text-align: center;
+}
+.future-wind {
+  @include fonts(black, 'Lato',400, 16px, normal);
+  text-align: center;
+  margin-top: 5px;
+}

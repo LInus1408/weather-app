@@ -2,6 +2,7 @@ const savesValues = {
   urlGeo: '',
   urlWeatherCurrent: '',
   itemWeatherCurrent: '',
+  urlWeatherFuture: '',
   nameCountry: '',
   nameRu: '',
   nameEng: '',

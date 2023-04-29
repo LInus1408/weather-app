@@ -11,6 +11,60 @@ class HtmlBuilder {
   }
 
   // eslint-disable-next-line class-methods-use-this
+  async builderFutureWeather(url) { // создание погоды на будущее
+    const dataGeo = await weatherAPI.getGeo(url);
+    const main = document.querySelector('.main');
+    const section = document.createElement('section');
+    section.className = 'section-FutureWeather';
+    main.append(section);
+    const cardsFutureWeather = document.createElement('div');
+    cardsFutureWeather.className = 'cards-Future-Weather';
+    section.prepend(cardsFutureWeather);
+
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < 40; i++) {
+      const cardFutureWeather = document.createElement('div');
+      cardFutureWeather.className = 'card-Future-Weather';
+      cardsFutureWeather.append(cardFutureWeather);
+
+      const futureTime = document.createElement('p');
+      futureTime.className = 'future-time';
+      futureTime.textContent = dataGeo.list[i].dt_txt;
+      cardFutureWeather.append(futureTime);
+
+      const futureWeatherPic = document.createElement('img');
+      futureWeatherPic.className = 'pic-future';
+      futureWeatherPic.src = `https://openweathermap.org/img/wn/${dataGeo.list[i].weather[0].icon}@2x.png`;
+      cardFutureWeather.append(futureWeatherPic);
+
+      const futureTemp = document.createElement('p');
+      futureTemp.className = 'future-temp';
+      futureTemp.innerHTML = (dataGeo.list[i].main.temp - 273 < 0) ? `${Math.trunc(dataGeo.list[i].main.temp - 273)}&deg;` : `+${Math.trunc(dataGeo.list[i].main.temp - 273)}&deg;`;
+      cardFutureWeather.append(futureTemp);
+
+      const FutureWeatherWind = document.createElement('p');
+      FutureWeatherWind.className = 'future-wind';
+      FutureWeatherWind.innerHTML = `${dataGeo.list[i].wind.speed} &#x1F32C;`;
+      if (dataGeo.list[i].wind.speed <= 2) {
+        FutureWeatherWind.style.backgroundColor = '#DCDCDC';
+      } else if (dataGeo.list[i].wind.speed <= 5) {
+        FutureWeatherWind.style.backgroundColor = '#808080';
+      } else if (dataGeo.list[i].wind.speed <= 8) {
+        FutureWeatherWind.style.backgroundColor = '#FFA07A';
+      } else if (dataGeo.list[i].wind.speed <= 12) {
+        FutureWeatherWind.style.backgroundColor = '#FFA500';
+      } else if (dataGeo.list[i].wind.speed <= 16) {
+        FutureWeatherWind.style.backgroundColor = '#CD5C5C';
+      } else if (dataGeo.list[i].wind.speed <= 20) {
+        FutureWeatherWind.style.backgroundColor = '#FF0000';
+      } else {
+        FutureWeatherWind.style.backgroundColor = '#8B0000';
+      }
+      cardFutureWeather.append(FutureWeatherWind);
+    }
+  }
+
+  // eslint-disable-next-line class-methods-use-this
   builderCurrentWeather() { // постройка карты текущей погоды
     const main = document.querySelector('.main');
     cleanHTML();
@@ -68,7 +122,7 @@ class HtmlBuilder {
     } else {
       const nameCity = document.createElement('h2');
       nameCity.className = 'current-city-name';
-      nameCity.textContent = `${savesValues.nameRu} , ${savesValues.nameCountry}`;
+      nameCity.textContent = `${savesValues.nameEng} , ${savesValues.nameCountry}`;
       cardCurrentWeather.append(nameCity);
 
       const currentTime = document.createElement('p');
@@ -204,6 +258,8 @@ class HtmlBuilder {
       this.value = dataGeo;
       savesValues.itemWeatherCurrent = dataGeo;
       this.builderCurrentWeather();
+      savesValues.urlWeatherFuture = `https://api.openweathermap.org/data/2.5/forecast?lat=${event.target.dataset.lat}&lon=${event.target.dataset.lon}&appid=0f0f05a27772edf9aeced21a5cb64568`;
+      this.builderFutureWeather(savesValues.urlWeatherFuture);
     });
   }
 
