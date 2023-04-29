@@ -17,7 +17,7 @@ export default function search() {
       htmlBuilder.incorrectValue();
       return false;
     }
-    const urlGeo = `http://api.openweathermap.org/geo/1.0/direct?q=${value}&limit=5&appid=0f0f05a27772edf9aeced21a5cb64568`;
+    const urlGeo = `https://api.openweathermap.org/geo/1.0/direct?q=${value}&limit=5&appid=0f0f05a27772edf9aeced21a5cb64568`;
     savesValues.urlGeo = urlGeo;
     const dataGeo = await weatherAPI.getGeo(urlGeo);
     if (dataGeo.length === 0) {
@@ -52,10 +52,4 @@ export default function search() {
     searchInput.blur();
     clearSearch(event);
   });
-  // if (document.querySelector('.result-Search')) {
-  //   const resultSearch = document.querySelector('.result-Search');
-  //   resultSearch.addEventListener('click', (event) => {
-  //     console.log('f')
-  //   });
-  // }
 }
