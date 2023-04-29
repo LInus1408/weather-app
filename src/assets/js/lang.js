@@ -16,12 +16,21 @@ export default function chooseLang() {
         htmlBuilder.builderSearch();
       }
       if (document.querySelector('.section-currentWeather')) { // если есть открытая погода
-        const urlCurrentWeather = `${savesValues.urlCurrentWeather}Eng`;
-        const dataGeo = await weatherAPI.getGeo(urlCurrentWeather);
-        const htmlBuilder = new HtmlBuilder('Eng', dataGeo);
-        savesValues.itemWeatherCurrent = dataGeo;
-        htmlBuilder.builderCurrentWeather();
-        htmlBuilder.builderFutureWeather(savesValues.urlWeatherFuture);
+        if (savesValues.urlCurrentWeather) {
+          const urlCurrentWeather = `${savesValues.urlCurrentWeather}Eng`;
+          const dataGeo = await weatherAPI.getGeo(urlCurrentWeather);
+          const htmlBuilder = new HtmlBuilder('Eng', dataGeo);
+          savesValues.itemWeatherCurrent = dataGeo;
+          htmlBuilder.builderCurrentWeather();
+          htmlBuilder.builderFutureWeather(savesValues.urlWeatherFuture);
+        } else {
+          const urlCurrentWeather = `${savesValues.urlWeatherCurrent}Eng`;
+          const dataGeo = await weatherAPI.getGeo(urlCurrentWeather);
+          const htmlBuilder = new HtmlBuilder('Eng', dataGeo);
+          savesValues.itemWeatherCurrent = dataGeo;
+          htmlBuilder.builderCurrentWeather();
+          htmlBuilder.builderFutureWeather(savesValues.urlWeatherFuture);
+        }
       }
     }
   });
@@ -37,12 +46,21 @@ export default function chooseLang() {
       }
     }
     if (document.querySelector('.section-currentWeather')) { // если есть открытая погода
-      const urlCurrentWeather = `${savesValues.urlCurrentWeather}Ru`;
-      const dataGeo = await weatherAPI.getGeo(urlCurrentWeather);
-      const htmlBuilder = new HtmlBuilder('Ru', dataGeo);
-      savesValues.itemWeatherCurrent = dataGeo;
-      htmlBuilder.builderCurrentWeather();
-      htmlBuilder.builderFutureWeather(savesValues.urlWeatherFuture);
+      if (savesValues.urlCurrentWeather) {
+        const urlCurrentWeather = `${savesValues.urlCurrentWeather}Ru`;
+        const dataGeo = await weatherAPI.getGeo(urlCurrentWeather);
+        const htmlBuilder = new HtmlBuilder('Ru', dataGeo);
+        savesValues.itemWeatherCurrent = dataGeo;
+        htmlBuilder.builderCurrentWeather();
+        htmlBuilder.builderFutureWeather(savesValues.urlWeatherFuture);
+      } else {
+        const urlCurrentWeather = `${savesValues.urlWeatherCurrent}Ru`;
+        const dataGeo = await weatherAPI.getGeo(urlCurrentWeather);
+        const htmlBuilder = new HtmlBuilder('Ru', dataGeo);
+        savesValues.itemWeatherCurrent = dataGeo;
+        htmlBuilder.builderCurrentWeather();
+        htmlBuilder.builderFutureWeather(savesValues.urlWeatherFuture);
+      }
     }
   });
 }

@@ -21,7 +21,6 @@ class HtmlBuilder {
     cardsFutureWeather.className = 'cards-Future-Weather';
     section.prepend(cardsFutureWeather);
 
-    console.log(url)
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < 40; i++) {
       const cardFutureWeather = document.createElement('div');
@@ -75,7 +74,6 @@ class HtmlBuilder {
     const cardCurrentWeather = document.createElement('div');
     cardCurrentWeather.className = 'card-Current-Weather';
     section.prepend(cardCurrentWeather);
-    console.log(this.value);
     if (this.lang === 'Ru') {
       const nameCity = document.createElement('h2');
       nameCity.className = 'current-city-name';
@@ -89,13 +87,12 @@ class HtmlBuilder {
 
       const wetherIcon = document.createElement('div');
       wetherIcon.className = 'wetherIcon';
-
       if (this.value.weather[0].icon === '01d' || this.value.weather[0].icon === '02d') {
         wetherIcon.innerHTML = `<div icon="sunny" data-label="Sunny">
         <span class="sun"></span>
       </div>`;
       } else if (this.value.weather[0].icon === '01n' || this.value.weather[0].icon === '02n' || this.value.weather[0].icon === '03n' || this.value.weather[0].icon === '04n') {
-        wetherIcon.innerHTM = `<div icon="supermoon" data-label="Cool!">
+        wetherIcon.innerHTML = `<div icon="supermoon" data-label="Cool!">
         <span class="moon"></span>
         <span class="meteor"></span>
       </div>`;
@@ -183,13 +180,12 @@ class HtmlBuilder {
 
       const wetherIcon = document.createElement('div');
       wetherIcon.className = 'wetherIcon';
-
       if (this.value.weather[0].icon === '01d' || this.value.weather[0].icon === '02d') {
         wetherIcon.innerHTML = `<div icon="sunny" data-label="Sunny">
         <span class="sun"></span>
       </div>`;
       } else if (this.value.weather[0].icon === '01n' || this.value.weather[0].icon === '02n' || this.value.weather[0].icon === '03n' || this.value.weather[0].icon === '04n') {
-        wetherIcon.innerHTM = `<div icon="supermoon" data-label="Cool!">
+        wetherIcon.innerHTML = `<div icon="supermoon" data-label="Cool!">
         <span class="moon"></span>
         <span class="meteor"></span>
       </div>`;
